@@ -1,6 +1,6 @@
 import React from "react";
-import MainPage from "./pages/MainPage";
+import Router from "./Router";
 
-const App: React.FC = () => <MainPage></MainPage>;
+const App: React.FC = () => <Router></Router>;
 
 export default App;
