@@ -1,9 +1,8 @@
 import {createTheme, ThemeProvider} from "@mui/material";
 import React, {useMemo, useState} from "react";
-import "@fontsource/open-sans";
-import {createThemePalette} from "store/ThemeContext/theme-palette";
-import {createThemeStyles} from "store/ThemeContext/theme-styles";
-import {useInitialThemeMode} from "hooks/use-initial-theme-mode";
+import {createThemePalette} from "features/theme/context/theme-palette";
+import {createThemeStyles} from "features/theme/context/theme-styles";
+import {useInitialThemeMode} from "features/theme/hooks/use-initial-theme-mode";
 import {useMobileBreakpoint} from "hooks/use-breakpoint";
 
 type ContainerMaxWidth = "md" | "lg" | "xl";
@@ -59,7 +58,7 @@ const ThemeContext = React.createContext<ThemeContextData>({
 });
 
 export const ThemeContextProvider: React.FC<{children: React.ReactNode}> = (props) => {
-    let initialMode = useInitialThemeMode();
+    const initialMode = useInitialThemeMode();
     const isMobile = useMobileBreakpoint();
     const [mode, setMode] = useState<string>(initialMode);
 
@@ -78,7 +77,7 @@ export const ThemeContextProvider: React.FC<{children: React.ReactNode}> = (prop
         },
         containerMaxWidth: "xl",
         typography: {
-            fontFamily: ["open sans", "Helvetica Neue", "Arial", "sans-serif"].join(",")
+            fontFamily: ["Helvetica Neue", "Arial", "sans-serif"].join(",")
         },
         palette: palette,
         components: components
